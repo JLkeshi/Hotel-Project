@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HOTEL GP</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="head-top">
+            <div class="site-name">
+                <span>SOCIOS HOTEL Admin Dashboard</span>
+            </div>
+        </div>
+    </header>
+    <!-- end of header -->
+
+    <!-- navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#customers">DEVELOPERS</a></li>
+        </ul>
+    </nav>
+    <!-- end of navigation -->
+
+    <!-- main content -->
+    <main class="main-content">
+        <!-- bookings section -->
+        <section id="bookings" class="dashboard-section">
+            <h2>Bookings</h2>
+            <div class="table-container">
+                <table id="bookingsTable">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer Name</th>
+                            <th>Check-in Date</th>
+                            <th>Check-out Date</th>
+                            <th>Rooms</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example row: -->
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>2024-05-25</td>
+                            <td>2024-05-28</td>
+                            <td>2</td>
+                            <td><button onclick="deleteRow(this)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+      
+
+    </main>
+    <!-- end of main content -->
+    <section class = "customers" id = "customers">
+        <div class = "sec-width">
+            <div class = "title">
+                <h2>DEVELOPER</h2>
+            </div>
+            <div class = "customers-container">
+                <!-- single customer -->
+                <div class = "customer">
+                    <div class = "rating">
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "far fa-star"></i></span>
+                    </div>
+                    <h3>PROGRAMMER</h3>
+                    <p></p>
+                    <img src = "images/cus1.jpg" alt = "customer image">
+                    <span>Jhon Lloyd Combalicer, Canada</span>
+                </div>
+                <!-- end of single customer -->
+                <!-- single customer -->
+                <div class = "customer">
+                    <div class = "rating">
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "far fa-star"></i></span>
+                    </div>
+                    <h3>PROGRAMMER</h3>
+                    <p></p>
+                    <img src = "images/cus2.jpg" alt = "customer image">
+                    <span>Ace Alfonso, Japan</span>
+                </div>
+                <!-- end of single customer -->
+                <!-- single customer -->
+                <div class = "customer">
+                    <div class = "rating">
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "far fa-star"></i></span>
+                    </div>
+                    <h3>DESIGNER</h3>
+                    <p></p>
+                    <img src = "images/cus4.jpg" alt = "customer image">
+                    <span>Ashly Mendoza, Parian</span>
+                </div>
+                <!-- end of single customer -->
+                <!-- single customer -->
+                <div class = "customer">
+                    <div class = "rating">
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "far fa-star"></i></span>
+                    </div>
+                    <h3>DESIGNER</h3>
+                    <p></p>
+                    <img src = "images/cus3.jpg" alt = "customer image">
+                    <span>Christian Gabrielle Garces, America</span>
+                </div>
+                
+                <!-- end of single customer -->
+            </div>
+            
+        </div>
+    </section>
+    <!-- end of body content -->
+    
+    <script>
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>

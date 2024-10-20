@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SOCIOS HOTEL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        /* Your existing CSS styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .signup-form, .booking-form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+
+        .signup-form input[type="text"],
+        .signup-form input[type="email"],
+        .signup-form input[type="password"],
+        .booking-form input[type="text"],
+        .booking-form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signup-form button,
+        .booking-form button {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="createRain()">
+    <section id="rain" class="rain"></section>
+
+    <header class="header" id="header">
+        <div class="head-top">
+            <div class="site-name">
+                <span>SOCIOS HOTEL</span>
+            </div>
+            <div class="site-nav">
+                <span id="nav-btn">MENU <i class="fas fa-bars"></i></span>
+            </div>
+        </div>
+
+        <div class="head-bottom flex">
+            <h2>NICE AND COMFORTABLE PLACE TO STAY</h2>
+            <p>"Welcome to Socios Hotel, where comfort meets hospitality. Experience a stay tailored to your needs with us."</p>
+            <button type="button" class="head-btn">GET STARTED</button>
+        </div>
+    </header>
+
+    <div class="sidenav" id="sidenav">
+        <span class="cancel-btn" id="cancel-btn">
+            <i class="fas fa-times"></i>
+        </span>
+
+        <ul class="navbar">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#customers">Customers</a></li>
+        </ul>
+        <a href="javascript:void(0)" class="btn sign-up" onclick="openSignupForm()">Sign Up</a>
+        <a href="login.html" class="btn log-in">Log In</a>
+    </div>
+
+    <div class="overlay" id="signup-overlay">
+        <div class="signup-form">
+            <button class="close-btn" onclick="closeSignupForm()">&times;</button>
+            <h2>Sign Up</h2>
+            <form action="hotelsystem.php" method="post">
+                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="last_name" placeholder="Last Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" name="signup">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+ <!-- Booking overlay -->
+<div class="overlay" id="booking-overlay">
+    <div class="booking-form">
+        <button class="close-btn" onclick="closeBookingForm()">&times;</button>
+        <h2>Book a Room</h2>
+        <form action="/FINAL%20hotel%20html/booking/reservations.php" method="post">
+            <input type="hidden" name="user_id" value="12345"> <!-- Example user ID -->
+            <input type="hidden" name="room_id" value="67890"> <!-- Example room ID -->
+            <input type="date" name="check_in" placeholder="Check-in Date" required>
+            <input type="date" name="check_out" placeholder="Check-out Date" required>
+            <button type="submit" name="book_now">Book Now</button>
+        </form>
+    </div>
+</div>
+<script>
+    function openBookingForm() {
+        document.getElementById('booking-overlay').style.display = 'flex';
+    }
+
+    function closeBookingForm() {
+        document.getElementById('booking-overlay').style.display = 'none';
+    }
+
+    // Check if there's a booking success message in the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const bookingSuccess = urlParams.get('booking_success');
+    const bookingError = urlParams.get('error');
+
+    if (bookingSuccess === 'true') {
+        alert('Booking Successful!');
+    } else if (bookingSuccess === 'false') {
+        alert('Booking Failed. Please try again.' + (bookingError ? '\nError: ' + bookingError : ''));
+    }
+</script>
+<!-- end of Booking overlay -->
+
+>
+
+    <section class="services sec-width" id="services">
+        <div class="title">
+            <h2>services</h2>
+        </div>
+        <div class="services-container">
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-utensils"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Food Service/ Food Runner</h2>
+                    <p>Your dedication to ensuring timely and delicious meals reach the guests is commendable. Your attention to detail and efficiency truly elevate the dining experience.</p>
+                </div>
+            </article>
+            <!-- end of single service -->
+
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-swimming-pool"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Refreshment</h2>
+                    <p>Your ability to quench guests' thirst with a smile is remarkable. Whether it's a refreshing drink or a comforting beverage, your service adds a delightful touch to their experience.</p>
+                </div>
+            </article>
+            <!-- end of single service -->
+
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-broom"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Housekeeping</h2>
+                    <p>Your commitment to maintaining cleanliness and comfort in every corner of the establishment is truly impressive. Guests can always count on returning to a spotless and inviting environment thanks to your hard work.</p>
+                </div>
+            </article>
+            <!-- end of single service -->
+
+            <!-- single service -->
+            <article class="service">
+                <div class="service-icon">
+                    <span>
+                        <i class="fas fa-door-closed"></i>
+                    </span>
+                </div>
+                <div class="service-content">
+                    <h2>Room Security</h2>
+                    <p>Your vigilance and professionalism in ensuring the safety and security of guests' belongings and privacy are invaluable. Your presence provides peace of mind, allowing guests to fully relax and enjoy their stay.</p>
+                </div>
+            </article>
+            <!-- end of single service -->
+        </div>
+    </section>
+
+    <section class="rooms sec-width" id="rooms">
+        <div class="title">
+            <h2>rooms</h2>
+        </div>
+        <div class="rooms-container">
+            <!-- single room -->
+            <article class="room">
+                <div class="room-image">
+                    <img src="images/img1.jpg" alt="room image">
+                </div>
+                <div class="room-text">
+                    <h3>Luxury Rooms</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            150.00
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            Top-notch Amenities
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            24/7 Room Service
+                        </li>
+                    </ul>
+                    <p>Indulge in unparalleled luxury and sophistication in our exquisite luxury rooms. Every detail has been meticulously designed to offer the utmost comfort and elegance, ensuring an unforgettable stay. Book now to experience the epitome of hospitality.</p>
+                    <button type="button" class="btn" onclick="openBookingForm()">book now</button>
+                </div>
+            </article>
+            <!-- end of single room -->
+
+            <!-- single room -->
+            <article class="room">
+                <div class="room-image">
+                    <img src="images/img2.jpg" alt="room image">
+                </div>
+                <div class="room-text">
+                    <h3>Standard Rooms</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            200.00
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            Modern Facilities
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            Complimentary Breakfast
+                        </li>
+                    </ul>
+                    <p>Experience the perfect blend of comfort and affordability in our standard rooms. Thoughtfully designed to cater to your needs, these rooms offer a cozy ambiance and modern facilities, making them ideal for both business and leisure travelers. Book now for a comfortable stay.</p>
+                    <button type="button" class="btn" onclick="openBookingForm()">book now</button>
+                </div>
+            </article>
+            <!-- end of single room -->
+
+            <!-- single room -->
+            <article class="room">
+                <div class="room-image">
+                    <img src="images/img3.jpg" alt="room image">
+                </div>
+                <div class="room-text">
+                    <h3>Family Rooms</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            450.00
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            Kid-friendly Amenities
+                        </li>
+                        <li>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
+                            Convenient Location
+                        </li>
+                    </ul>
+                    <p>Create lasting memories with your loved ones in our family rooms. Designed to accommodate families of all sizes, these rooms provide a spacious and comfortable environment with kid-friendly amenities and a convenient location. Book now for a memorable family getaway.</p>
+                    <button type="button" class="btn" onclick="openBookingForm()">book now</button>
+                </div>
+            </article>
+            <!-- end of single room -->
+        </div>
+    </section>
+
+    <section class="customers sec-width" id="customers">
+        <div class="title">
+            <h2>customers</h2>
+        </div>
+        <div class="customers-container">
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                </div>
+                <h3>We Loved it</h3>
+                <p>Socios Hotel provided us with an exceptional stay. The staff was friendly, the rooms were immaculate, and the amenities exceeded our expectations. We can't wait to come back!</p>
+                <img src="images/cus1.jpg" alt="customer image">
+                <span>Lloyd Combalicer</span>
+            </div>
+            <!-- end of single customer -->
+
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                </div>
+                <h3>Comfortable and Enjoyable</h3>
+                <p>Our stay at Socios Hotel was comfortable and enjoyable. The room was well-appointed, the dining options were excellent, and the overall experience was fantastic. Highly recommended!</p>
+                <img src="images/cus2.jpg" alt="customer image">
+                <span>Ace Alfonso</span>
+            </div>
+            <!-- end of single customer -->
+
+            <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                </div>
+                <h3>Amazing Experience</h3>
+                <p>We had an amazing experience at Socios Hotel. From the moment we arrived, we were treated with warmth and professionalism. The facilities were top-notch, and the location was perfect. We'll definitely be back!</p>
+                <img src="images/cus3.jpg" alt="customer image">
+                <span>Christian Garces</span>
+            </div>
+            <!-- end of single customer -->
+                 <!-- single customer -->
+            <div class="customer">
+                <div class="rating">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                </div>
+                <h3>Amazing Experience</h3>
+                <p>We had an amazing experience at Socios Hotel. From the moment we arrived, we were treated with warmth and professionalism. The facilities were top-notch, and the location was perfect. We'll definitely be back!</p>
+                <img src="images/cus4.jpg" alt="customer image">
+                <span>Ashly Mendoza</span>
+            </div>
+
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h2>About Us</h2>
+                <p>At Socios Hotel, we are dedicated to providing our guests with the highest level of comfort and hospitality. Our team of professionals is committed to ensuring that your stay with us is both enjoyable and memorable.</p>
+                <ul class="social-icons">
+                    <li>
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.twitter.com">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Quick Links</h2>
+                <a href="#">About</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div>
+                <h2>Contact Info</h2>
+                <div class="contact-item">
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                    <span>
+                        1234 Hotel St, City, Country
+                    </span>
+                </div>
+                <div class="contact-item">
+                    <span>
+                        <i class="fas fa-phone-alt"></i>
+                    </span>
+                    <span>
+                        +123 456 7890
+                    </span>
+                </div>
+                <div class="contact-item">
+                    <span>
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span>
+                        info@socioshotel.com
+                    </span>
+                </div>
+            </div>
+
+            <div>
+                <h2>Newsletter</h2>
+                <p>Subscribe to our newsletter to stay updated on our latest news, offers, and promotions.</p>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="rain.js"></script>
+    <script>
+        document.getElementById('nav-btn').addEventListener('click', () => {
+            document.getElementById('sidenav').classList.toggle('show');
+        });
+
+        document.getElementById('cancel-btn').addEventListener('click', () => {
+            document.getElementById('sidenav').classList.remove('show');
+        });
+
+        function openSignupForm() {
+            document.getElementById('signup-overlay').style.display = 'flex';
+        }
+
+        function closeSignupForm() {
+            document.getElementById('signup-overlay').style.display = 'none';
+        }
+
+        function openBookingForm() {
+            document.getElementById('booking-overlay').style.display = 'flex';
+        }
+
+        function closeBookingForm() {
+            document.getElementById('booking-overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
